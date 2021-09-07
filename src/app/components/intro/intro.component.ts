@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Fase } from 'src/app/enums/fase';
+import { JuegoService } from 'src/app/services/juego.service';
 
 @Component({
   selector: 'app-intro',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private juego:JuegoService) { }
 
   ngOnInit(): void {
   }
+
+  setFase() {
+    this.juego.setFase(Fase.Letras);
+  }
+
+  
 
 }

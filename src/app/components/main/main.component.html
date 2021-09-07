@@ -1,4 +1,6 @@
-<app-intro></app-intro>
-<app-cifras></app-cifras>
-<app-letras></app-letras>
-<app-resultado></app-resultado>
+<app-intro *ngIf="fase==fases.Intro"></app-intro>
+<app-cifras *ngIf="fase==fases.Cifras"></app-cifras>
+<app-letras *ngIf="fase==fases.Letras"></app-letras>
+<app-resultado *ngIf="fase==fases.Resultado"></app-resultado>
+
+<button (click)="prueba()">prueba</button>

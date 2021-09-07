@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Fase } from 'src/app/enums/fase';
+import { JuegoService } from 'src/app/services/juego.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  fase: Fase = Fase.Intro;
+  fases = Fase;
+
+  constructor(private juego:JuegoService) { }
 
   ngOnInit(): void {
+
   }
 
+  prueba(){
+    console.log(this.juego.getFase());
+  }
 }
