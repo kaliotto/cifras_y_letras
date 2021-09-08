@@ -1,1 +1,16 @@
+<div class="container d-flex justify-content-center">
+    <button [disabled]="letras.length==9" class="btn btn-primary" (click)="consonante()">Consonante</button>
+    <button [disabled]="letras.length==9" class="btn btn-primary" (click)="vocal()">Vocal</button>
+</div>
+
+<div class="container d-flex flex-wrap justify-content-center">
+    <div *ngFor="let letra of letras" class="card">
+        <div class="card-body">
+            <span class="letra">{{letra}}</span>
+        </div>
+    </div>
+</div>
+
+
+
 <button class="btn btn-success" (click)="jugar()">Letras</button>
