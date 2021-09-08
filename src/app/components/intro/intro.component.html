@@ -1,8 +1,26 @@
 <div class="container d-flex justify-content-center">
-    <img class="w-50 h-50 m-0-auto" src="../../../assets/CyF_logo.png" alt="Logo Cifras y Letras">
+    <img *ngIf="!introduciendoJugadores" class="w-50 h-50" src="../../../assets/CyF_logo.png" alt="Logo Cifras y Letras">
+    <img *ngIf="introduciendoJugadores" class="w-25 h-25" src="../../../assets/CyF_logo.png" alt="Logo Cifras y Letras">
 </div>
+
 <div class="container center-text">
     <h1>Bienvenidos a Cifras y Letras</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, deleniti sint. Nobis itaque sint ullam repellendus at corrupti molestiae quos magni veniam non. Voluptatibus fugiat, labore id itaque aut expedita!</p>
-    <button class="btn btn-primary" (click)="setFase()">Jugar</button>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, deleniti sint. Nobis itaque sint ullam
+        repellendus at corrupti molestiae quos magni veniam non. Voluptatibus fugiat, labore id itaque aut expedita!</p>
+    <button *ngIf="!introduciendoJugadores" class="btn btn-primary" (click)="introducirJugadores(true)">Jugar</button>
+    <div *ngIf="introduciendoJugadores">
+        <div>
+            <div class="mb-3 d-flex justify-content-between">
+                <input type="text" placeholder="Nombre del Jugador" class="form-control" id="nombre" [formControl]="nombre">
+                <button (click)="guardarJugador()" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+        <ul *ngIf="jugadores && jugadores.length > 0" class="list-group">
+            <li *ngFor="let jugador of jugadores" class="list-group-item">Jugador {{jugador.posicion + 1}}: <b>{{jugador.nombre}}</b></li>
+        </ul>
+        <h4 *ngIf="!jugadores || jugadores.length == 0">Introduce al menos dos jugadores para empezar a jugar</h4>
+    </div>
+
+    <button *ngIf="introduciendoJugadores" class="btn btn-success" (click)="jugar()">Jugar</button>
 </div>

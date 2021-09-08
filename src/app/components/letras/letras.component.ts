@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JuegoService } from 'src/app/services/juego.service';
 
 @Component({
   selector: 'app-letras',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LetrasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private juego:JuegoService) { }
 
   ngOnInit(): void {
+  }
+
+  jugar() {
+    this.juego.jugar();
   }
 
 }

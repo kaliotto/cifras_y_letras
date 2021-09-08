@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Fase } from '../enums/fase';
 import { Jugador } from '../interfaces/jugador';
 
@@ -6,13 +7,19 @@ import { Jugador } from '../interfaces/jugador';
   providedIn: 'root'
 })
 export class JuegoService {
-  fase: Fase | undefined;
+  fase = new Subject<Fase>();
+  fase$ = this.fase.asObservable();
   jugadores: [Jugador] | undefined;
+
+  etapaActual: number = 0;
+  etapasDelJuego: Fase[] = [Fase.Cifras, Fase.Letras, Fase.Letras, Fase.Cifras, Fase.Letras, Fase.Letras, Fase.Cifras, Fase.Letras, Fase.Letras, Fase.Cifras, Fase.Resultado];
 
   constructor() { }
 
-  setFase(newFase: string) {
-    this.fase = (<any>Fase)[newFase];
+  jugar() {
+    let faseActual: Fase = this.etapasDelJuego[this.etapaActual];
+    this.etapaActual++;
+    this.fase.next((<any>Fase)[faseActual]);
   }
 
   getFase() {
@@ -21,5 +28,9 @@ export class JuegoService {
 
   setJugadores(jugadores: [Jugador]) {
     this.jugadores = jugadores;
+  }
+
+  getJugadores() {
+    return this.jugadores;
   }
 }

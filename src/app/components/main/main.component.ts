@@ -12,13 +12,11 @@ export class MainComponent implements OnInit {
   fase: Fase = Fase.Intro;
   fases = Fase;
 
-  constructor(private juego:JuegoService) { }
+  constructor(private juego: JuegoService) {
+    juego.fase$.subscribe(fase => { this.fase = fase });
+  }
 
   ngOnInit(): void {
 
-  }
-
-  prueba(){
-    console.log(this.juego.getFase());
   }
 }

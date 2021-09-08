@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Fase } from 'src/app/enums/fase';
+import { Jugador } from 'src/app/interfaces/jugador';
 import { JuegoService } from 'src/app/services/juego.service';
 
 @Component({
@@ -9,15 +11,30 @@ import { JuegoService } from 'src/app/services/juego.service';
 })
 export class IntroComponent implements OnInit {
 
-  constructor(private juego:JuegoService) { }
+  introduciendoJugadores: boolean = false;
+  jugadores: Jugador[] = [];
+  nombre = new FormControl('');
+
+  constructor(private juego: JuegoService) { }
 
   ngOnInit(): void {
   }
 
-  setFase() {
-    this.juego.setFase(Fase.Letras);
+  introducirJugadores(introJugadores: boolean) {
+    this.introduciendoJugadores = introJugadores;
   }
 
-  
+  jugar() {
+    this.juego.jugar();
+  }
+
+  guardarJugador() {
+    let auxJugador: Jugador = { nombre: this.nombre.value, puntuacion: 0, posicion: this.jugadores.length };
+    this.jugadores.push(auxJugador);
+    this.nombre = new FormControl('');
+    console.log(this.jugadores);
+  }
+
+
 
 }
