@@ -25,6 +25,7 @@ export class IntroComponent implements OnInit {
   }
 
   jugar() {
+    this.juego.setJugadores(this.jugadores);
     this.juego.jugar();
   }
 
@@ -32,7 +33,6 @@ export class IntroComponent implements OnInit {
     let auxJugador: Jugador = { nombre: this.nombre.value, puntuacion: 0, posicion: this.jugadores.length };
     this.jugadores.push(auxJugador);
     this.nombre = new FormControl('');
-    console.log(this.jugadores);
   }
 
 

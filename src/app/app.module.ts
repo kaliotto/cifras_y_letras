@@ -9,6 +9,7 @@ import { LetrasComponent } from './components/letras/letras.component';
 import { ResultadoComponent } from './components/resultado/resultado.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { TimerComponent } from './components/shared/timer/timer.component';
+import { QuienGanaComponent } from './components/shared/quien-gana/quien-gana.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TimerComponent } from './components/shared/timer/timer.component';
     LetrasComponent,
     ResultadoComponent,
     IntroComponent,
-    TimerComponent
+    TimerComponent,
+    QuienGanaComponent
   ],
   imports: [
     BrowserModule,

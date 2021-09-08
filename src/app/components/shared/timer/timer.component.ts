@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
   @Input() tiempo!: number;
+  @Output() terminadoEvent = new EventEmitter<boolean>();
+
   actual!: number;
   porcentaje!: number;
   constructor() { }
@@ -17,7 +19,10 @@ export class TimerComponent implements OnInit {
     let intervalId = setInterval(() => {
       this.actual--;
       this.porcentaje = (this.actual * 100) / this.tiempo;
-      if (this.actual === 0) clearInterval(intervalId)
+      if (this.actual === 0) {
+        clearInterval(intervalId);
+        this.terminadoEvent.emit(true);
+      }
     }, 1000)
   }
 }

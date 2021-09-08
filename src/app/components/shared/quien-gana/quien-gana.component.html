@@ -1,0 +1,9 @@
+<div *ngIf="jugadores.length>0" class="btn-group" role="group">
+    <ng-container *ngFor="let jugador of jugadores">
+        <input type="radio" class="btn-check" name="ganador" [id]="'rd'+jugador.nombre" autocomplete="off" [formControl]="ganador" [value]="jugador.nombre">
+        <label class="btn btn-outline-primary" [for]="'rd'+jugador.nombre">{{jugador.nombre}}</label>
+    </ng-container>
+</div>
+
+
+<button (click)="alerta()">Pulsa</button>

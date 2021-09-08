@@ -11,6 +11,8 @@
     </div>
 </div>
 
-<app-timer *ngIf="letras.length==9" [tiempo]="90"></app-timer>
+<app-timer *ngIf="letras.length==9 && !terminado" (terminadoEvent)="terminado=true" [tiempo]="3"></app-timer>
+
+<app-quien-gana *ngIf="letras.length==9 && terminado"></app-quien-gana>
 
 <button class="btn btn-success" (click)="jugar()">Letras</button>
