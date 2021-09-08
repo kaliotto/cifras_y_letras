@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center mb-3">
     <button [disabled]="letras.length==9" class="btn btn-primary" (click)="consonante()">Consonante</button>
     <button [disabled]="letras.length==9" class="btn btn-primary" (click)="vocal()">Vocal</button>
 </div>
@@ -11,6 +11,6 @@
     </div>
 </div>
 
-
+<app-timer *ngIf="letras.length==9" [tiempo]="90"></app-timer>
 
 <button class="btn btn-success" (click)="jugar()">Letras</button>
