@@ -1,3 +1,5 @@
+<p>¿Quién ha ganado?</p>
+
 <div *ngIf="jugadores.length>0" class="btn-group" role="group">
     <ng-container *ngFor="let jugador of jugadores">
         <input type="radio" class="btn-check" name="ganador" [id]="'rd'+jugador.nombre" autocomplete="off" [formControl]="ganador" [value]="jugador.nombre">
@@ -5,5 +7,12 @@
     </ng-container>
 </div>
 
+<p>¿Con cuántos puntos?</p>
+<div class="btn-group" role="group">
+    <ng-container *ngFor="let puntos of [1,2,3,4,5,6,7,8,9]">
+        <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+puntos" autocomplete="off" [formControl]="puntuacion" [value]="puntos">
+        <label class="btn btn-outline-primary" [for]="'rd'+puntos">{{puntos}}</label>
+    </ng-container>
+</div>
 
 <button (click)="alerta()">Pulsa</button>
