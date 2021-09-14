@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Fase } from 'src/app/enums/fase';
 import { JuegoService } from 'src/app/services/juego.service';
 
 @Component({
@@ -6,16 +7,29 @@ import { JuegoService } from 'src/app/services/juego.service';
   templateUrl: './letras.component.html',
   styleUrls: ['./letras.component.scss']
 })
-export class LetrasComponent implements OnInit {
+export class LetrasComponent implements OnInit, OnChanges {
+  @Input() fase!: Fase;
 
   consonantes: string[] = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "ñ", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"];
   vocales: string[] = ["a", "e", "i", "o", "u"];
+
   letras: string[] = [];
   terminado: boolean = false;
 
   constructor(private juego: JuegoService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    this.inicializacion();
+  }
+
+  inicializacion() {
+    this.letras = [];
+    this.terminado = false;
   }
 
   consonante() {

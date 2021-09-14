@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Fase } from 'src/app/enums/fase';
 import { Jugador } from 'src/app/interfaces/jugador';
 import { JuegoService } from 'src/app/services/juego.service';
+import { Modal } from "bootstrap";
 
 @Component({
   selector: 'app-quien-gana',
@@ -10,21 +11,36 @@ import { JuegoService } from 'src/app/services/juego.service';
   styleUrls: ['./quien-gana.component.scss']
 })
 export class QuienGanaComponent implements OnInit {
-  jugadores: Jugador[]=[];
+  @Input() fase!: Fase;
+
+  jugadores: Jugador[] = [];
   ganador = new FormControl('');
   puntuacion = new FormControl('');
   fases = Fase;
-  fase:Fase | undefined;
+  //fase!: Fase;
+
+  modal: any;
 
   constructor(private juego: JuegoService) { }
 
-  ngOnInit(): void {
+  ngAfterContentInit(): void {
     this.jugadores = this.juego.getJugadores();
-    this.juego.getFase().subscribe(fase => { this.fase = fase });
+    this.mostrarModal();
   }
 
-  alerta(){
-    console.log(this.ganador.value);
-    console.log(this.puntuacion.value);
+  ngOnInit(): void { }
+
+  guardarPuntuacion() {
+    let ganador = this.jugadores.find(j => j.nombre == this.ganador.value) as Jugador;
+    ganador.puntuacion += this.puntuacion.value;
+    this.juego.setJugadores(this.jugadores);
+    this.modal.toggle();
+    this.ngOnInit();
+  }
+
+  mostrarModal() {
+    let element = document.getElementById('quienGanaModal') as HTMLElement;
+    this.modal = new Modal(element);
+    this.modal.show();
   }
 }

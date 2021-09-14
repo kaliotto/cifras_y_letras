@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Fase } from 'src/app/enums/fase';
 import { JuegoService } from 'src/app/services/juego.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { JuegoService } from 'src/app/services/juego.service';
   styleUrls: ['./cifras.component.scss']
 })
 export class CifrasComponent implements OnInit {
+  @Input() fase!: Fase;
 
   constructor(private juego: JuegoService) { }
 
