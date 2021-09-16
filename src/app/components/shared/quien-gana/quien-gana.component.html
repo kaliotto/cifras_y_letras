@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <p>¿Quién ha ganado?</p>
-                <div *ngIf="jugadores.length>0" class="btn-group" role="group">
+                <div *ngIf="jugadores.length>0" class="btn-group d-flex flex-wrap align-items-start" role="group">
                     <ng-container *ngFor="let jugador of jugadores">
                         <input type="radio" class="btn-check" name="ganador" [id]="'rd'+jugador.nombre"
                             autocomplete="off" [formControl]="ganador" [value]="jugador.nombre">

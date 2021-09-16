@@ -1,1 +1,16 @@
+<div class="container d-flex justify-content-center mb-3">
+    <button [disabled]="cifras.length==6" class="btn btn-primary" (click)="getCifra()">Cifra</button>
+</div>
+
+<div class="container grid">
+    <div *ngFor="let cifra of cifras" class="card">
+        <div class="card-body text-center">
+            <span class="cifra">{{cifra}}</span>
+        </div>
+    </div>
+</div>
+
+
+
+
 <button class="btn btn-success" (click)="jugar()">Cifras</button>

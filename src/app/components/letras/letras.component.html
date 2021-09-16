@@ -3,13 +3,21 @@
     <button [disabled]="letras.length==9" class="btn btn-primary" (click)="vocal()">Vocal</button>
 </div>
 
-<div class="container d-flex flex-wrap justify-content-center">
+<div class="container grid">
+    <div *ngFor="let letra of letras" class="card">
+        <div class="card-body text-center">
+            <span class="letra">{{letra}}</span>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="container d-flex flex-wrap justify-content-center">
     <div *ngFor="let letra of letras" class="card">
         <div class="card-body">
             <span class="letra">{{letra}}</span>
         </div>
     </div>
-</div>
+</div> -->
 
 <app-timer *ngIf="letras.length==9 && !terminado" (terminadoEvent)="terminado=true" [tiempo]="1"></app-timer>
 

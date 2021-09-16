@@ -1,0 +1,17 @@
+.cifra {
+    font-size: 5em;
+    font-weight: bolder;
+    font-family: monospace;
+  }
+  
+  
+  .grid {
+    display: flex;  /* establish flex container */
+    flex-wrap: wrap;  /* enable flex items to wrap */
+    justify-content: flex-start;
+  }
+  
+  .grid > .card {
+    flex: 0 0 49%;  /* don't grow, don't shrink, width */
+    margin-bottom: 5px;
+  }
