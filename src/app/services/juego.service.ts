@@ -12,7 +12,7 @@ export class JuegoService {
   faseActual: Fase = Fase.Intro;
 
   etapaActual: number = 0;
-  etapasDelJuego: Fase[] = [Fase.Cifras, Fase.Letras, Fase.Letras, Fase.Cifras, Fase.Letras, Fase.Letras, Fase.Cifras, Fase.Letras, Fase.Letras, Fase.Cifras, Fase.Resultado];
+  etapasDelJuego: Fase[] = [Fase.Cifras, Fase.Letras, Fase.Letras2, Fase.Cifras, Fase.Letras, Fase.Letras2, Fase.Cifras, Fase.Letras, Fase.Letras2, Fase.Cifras, Fase.Resultado];
 
   constructor() { }
 

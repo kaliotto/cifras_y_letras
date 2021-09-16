@@ -17,7 +17,6 @@ export class QuienGanaComponent implements OnInit {
   ganador = new FormControl('');
   puntuacion = new FormControl('');
   fases = Fase;
-  //fase!: Fase;
 
   modal: any;
 
@@ -35,7 +34,7 @@ export class QuienGanaComponent implements OnInit {
     ganador.puntuacion += this.puntuacion.value;
     this.juego.setJugadores(this.jugadores);
     this.modal.toggle();
-    this.ngOnInit();
+    this.juego.jugar()
   }
 
   mostrarModal() {

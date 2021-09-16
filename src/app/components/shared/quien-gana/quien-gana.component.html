@@ -1,39 +1,12 @@
-<!-- <p>¿Quién ha ganado?</p>
-
-<div *ngIf="jugadores.length>0" class="btn-group" role="group">
-    <ng-container *ngFor="let jugador of jugadores">
-        <input type="radio" class="btn-check" name="ganador" [id]="'rd'+jugador.nombre" autocomplete="off" [formControl]="ganador" [value]="jugador.nombre">
-        <label class="btn btn-outline-primary" [for]="'rd'+jugador.nombre">{{jugador.nombre}}</label>
-    </ng-container>
-</div>
-
-<p>¿Con cuántos puntos?</p>
-<div class="btn-group" role="group">
-    <ng-container *ngFor="let puntos of [1,2,3,4,5,6,7,8,9]">
-        <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+puntos" autocomplete="off" [formControl]="puntuacion" [value]="puntos">
-        <label class="btn btn-outline-primary" [for]="'rd'+puntos">{{puntos}}</label>
-    </ng-container>
-</div>
-
-<button (click)="alerta()">Pulsa</button> -->
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button> -->
-
-<!-- <button type="button" class="btn btn-primary" (click)="mostrarModal()">¿Quién ha ganado?</button> -->
-
-<!-- Modal -->
 <div class="modal fade" id="quienGanaModal" tabindex="-1" aria-labelledby="quienGanaModalLabel"
     data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="quienGanaModalLabel">¿Quién ha ganado?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="quienGanaModalLabel">Introduce el ganador</h5>
             </div>
             <div class="modal-body">
+                <p>¿Quién ha ganado?</p>
                 <div *ngIf="jugadores.length>0" class="btn-group" role="group">
                     <ng-container *ngFor="let jugador of jugadores">
                         <input type="radio" class="btn-check" name="ganador" [id]="'rd'+jugador.nombre"
@@ -42,31 +15,32 @@
                     </ng-container>
                 </div>
 
-                <div *ngIf="fase && fase==fases.Letras">
-                    <p>¿Con cuántos puntos?</p>
-                    <div class="btn-group" role="group">
-                        <ng-container *ngFor="let puntos of [1,2,3,4,5,6,7,8,9]">
-                            <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+puntos"
-                                autocomplete="off" [formControl]="puntuacion" [value]="puntos">
-                            <label class="btn btn-outline-primary" [for]="'rd'+puntos">{{puntos}}</label>
-                        </ng-container>
+                <div class="mt-4">
+                    <div *ngIf="fase && (fase==fases.Letras || fase==fases.Letras2)">
+                        <p>¿Con cuántos puntos?</p>
+                        <div class="btn-group" role="group">
+                            <ng-container *ngFor="let puntos of [1,2,3,4,5,6,7,8,9]">
+                                <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+puntos"
+                                    autocomplete="off" [formControl]="puntuacion" [value]="puntos">
+                                <label class="btn btn-outline-primary" [for]="'rd'+puntos">{{puntos}}</label>
+                            </ng-container>
+                        </div>
                     </div>
-                </div>
 
-                <div *ngIf="fase && fase==fases.Cifras">
-                    <p>¿Número exacto o el más próximo?</p>
-                    <div class="btn-group" role="group">
-                        <ng-container *ngFor="let acierto of ['Exacto','Aproximado']">
-                            <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+acierto"
-                                autocomplete="off" [formControl]="puntuacion" [value]="acierto">
-                            <label class="btn btn-outline-primary" [for]="'rd'+acierto">{{acierto}}</label>
-                        </ng-container>
+                    <div *ngIf="fase && fase==fases.Cifras">
+                        <p>¿Número exacto o el más próximo?</p>
+                        <div class="btn-group" role="group">
+                            <ng-container *ngFor="let acierto of ['Exacto','Aproximado']">
+                                <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+acierto"
+                                    autocomplete="off" [formControl]="puntuacion" [value]="acierto">
+                                <label class="btn btn-outline-primary" [for]="'rd'+acierto">{{acierto}}</label>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-primary" (click)="guardarPuntuacion()">Guardar</button>
+            <div class="modal-footer">                
+                <button type="button" [disabled]="ganador.pristine || puntuacion.pristine" class="btn btn-primary" (click)="guardarPuntuacion()">Guardar</button>
             </div>
         </div>
     </div>
