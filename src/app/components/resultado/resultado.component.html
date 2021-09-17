@@ -1,1 +1,22 @@
-<p>resultado works!</p>
+<div class="container text-center">
+    <h3>¡Enhorabuena {{ganador.nombre}}! ¡Eres el ganador!</h3>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Posicion</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Puntuacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let jugador of jugadores; let i=index" [ngClass]="{'table-success': jugador.posicion === ganador.posicion}">
+                <th scope="row">{{i+1}}</th>
+                <td>{{jugador.nombre}}</td>
+                <td>{{jugador.puntuacion}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

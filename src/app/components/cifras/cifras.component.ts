@@ -12,10 +12,13 @@ export class CifrasComponent implements OnInit, OnChanges {
 
   poolNumeros: number[] = [];
   cifras: number[] = [];
+  numeroObjetivo: number = 0;
+  terminado: boolean = false;
 
   constructor(private juego: JuegoService) { }
 
   ngOnInit(): void {
+    this.inicializacion();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -24,6 +27,8 @@ export class CifrasComponent implements OnInit, OnChanges {
   inicializacion() {
     this.poolNumeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100];
     this.cifras = [];
+    this.numeroObjetivo = Math.floor(Math.random() * (999 - 101 + 1)) + 101;
+    this.terminado = false;
   }
 
   jugar() {

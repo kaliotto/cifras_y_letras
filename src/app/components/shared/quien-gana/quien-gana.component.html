@@ -32,15 +32,16 @@
                         <div class="btn-group" role="group">
                             <ng-container *ngFor="let acierto of ['Exacto','Aproximado']">
                                 <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+acierto"
-                                    autocomplete="off" [formControl]="puntuacion" [value]="acierto">
+                                    autocomplete="off" [formControl]="puntuacion" [value]="acierto=='Exacto'?9:6">
                                 <label class="btn btn-outline-primary" [for]="'rd'+acierto">{{acierto}}</label>
                             </ng-container>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">                
-                <button type="button" [disabled]="ganador.pristine || puntuacion.pristine" class="btn btn-primary" (click)="guardarPuntuacion()">Guardar</button>
+            <div class="modal-footer">
+                <button type="button" [disabled]="ganador.pristine || puntuacion.pristine" class="btn btn-primary"
+                    (click)="guardarPuntuacion()">Guardar</button>
             </div>
         </div>
     </div>

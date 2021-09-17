@@ -23,8 +23,7 @@ export class QuienGanaComponent implements OnInit {
   constructor(private juego: JuegoService) { }
 
   ngAfterContentInit(): void {
-    //this.jugadores = this.juego.getJugadores();
-    this.jugadores = [{ nombre: "mikel", posicion: 1, puntuacion: 0 }, { nombre: "vero", posicion: 1, puntuacion: 0 }, { nombre: "carol", posicion: 1, puntuacion: 0 }, { nombre: "carlos", posicion: 1, puntuacion: 0 }, { nombre: "txemi", posicion: 1, puntuacion: 0 }, { nombre: "vir", posicion: 1, puntuacion: 0 }, { nombre: "jesus", posicion: 1, puntuacion: 0 }, { nombre: "nerea", posicion: 1, puntuacion: 0 }, { nombre: "adrian", posicion: 1, puntuacion: 0 }];
+    this.jugadores = this.juego.getJugadores();    
     this.mostrarModal();
   }
 
