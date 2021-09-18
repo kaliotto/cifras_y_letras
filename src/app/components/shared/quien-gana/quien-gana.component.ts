@@ -18,13 +18,14 @@ export class QuienGanaComponent implements OnInit {
   ganador = new FormControl('');
   puntuacion = new FormControl('');
   fases = Fase;
+  mostrarPalabras: boolean = false;
 
   modal: any;
 
   constructor(private juego: JuegoService) { }
 
   ngAfterContentInit(): void {
-    this.jugadores = this.juego.getJugadores();    
+    this.jugadores = this.juego.getJugadores();
     this.mostrarModal();
   }
 

@@ -7,6 +7,7 @@ import { Jugador } from '../interfaces/jugador';
   providedIn: 'root'
 })
 export class JuegoService {
+
   private fase$ = new Subject<Fase>();
   private jugadores: Jugador[] = [];
   faseActual: Fase = Fase.Intro;
@@ -32,9 +33,6 @@ export class JuegoService {
       ];
     }
 
-
-
-
     this.faseActual = this.etapasDelJuego[this.etapaActual];
     this.etapaActual++;
     this.fase$.next(this.faseActual);
@@ -51,5 +49,14 @@ export class JuegoService {
 
   getJugadores() {
     return this.jugadores;
+  }
+
+  getTiempoCifras(): number {
+    //return 45;
+    return 6;
+  }
+  getTiempoLetras(): number {
+    //return 30;
+    return 1;
   }
 }

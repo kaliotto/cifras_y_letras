@@ -17,8 +17,11 @@ export class LetrasComponent implements OnInit, OnChanges {
 
   letras: string[] = [];
   terminado: boolean = false;
+  tiempo!: number;
 
-  constructor(private juego: JuegoService) { }
+  constructor(private juego: JuegoService) {
+    this.tiempo = juego.getTiempoLetras();
+  }
 
   ngOnInit(): void {
 
@@ -39,7 +42,7 @@ export class LetrasComponent implements OnInit, OnChanges {
 
   vocal() {
     this.letras.push(this.vocales[Math.floor(Math.random() * this.vocales.length)].toUpperCase());
-    //this.letras=["B","A","S","A","B","O","C","X","R",]
+    //this.letras = ["V", "E", "D", "A", "E", "J", "X", "X", "X",]
   }
 
   jugar() {
@@ -74,9 +77,10 @@ export class LetrasComponent implements OnInit, OnChanges {
     let masLarga = candidatas.reduce((c, v) => c.length > v.length ? c : v);
     this.masLargas = candidatas.filter(p => p.length >= masLarga.length);
     if (this.masLargas.length == 1) {
-      let masCortas = candidatas.filter(p => p.length >= masLarga.length - 1).slice(0, 2);
+      let masCortas = candidatas.filter(p => p.length < masLarga.length - 1).sort((a, b) => b.length - a.length).slice(0, 2);
       this.masLargas = this.masLargas.concat(masCortas);
     }
+    this.masLargas.slice(0, 11);
     console.log(this.masLargas);
   }
 }

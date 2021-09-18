@@ -4,13 +4,13 @@
 </div>
 
 <div class="container grid">
-    <div *ngFor="let letra of letras" class="card">
+    <div *ngFor="let letra of letras" class="card animate__animated animate__flip animate__faster">
         <div class="card-body text-center">
             <span class="letra">{{letra}}</span>
         </div>
     </div>
 </div>
 
-<app-timer *ngIf="letras.length==9 && !terminado" (terminadoEvent)="terminar()" [tiempo]="3"></app-timer>
+<app-timer *ngIf="letras.length==9 && !terminado" (terminadoEvent)="terminar()" [tiempo]="tiempo"></app-timer>
 
 <app-quien-gana *ngIf="letras.length==9 && terminado" [fase]="fase" [masLargas]="masLargas"></app-quien-gana>

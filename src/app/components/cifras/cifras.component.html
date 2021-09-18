@@ -3,7 +3,7 @@
 </div>
 
 <div class="container grid">
-    <div *ngFor="let cifra of cifras" class="card">
+    <div *ngFor="let cifra of cifras" class="card animate__animated animate__flipInY animate__faster">
         <div class="card-body text-center">
             <span class="cifra">{{cifra}}</span>
         </div>
@@ -12,9 +12,9 @@
 
 <div *ngIf="cifras.length==6" class="container text-center">
     <h3>El número a conseguir es el:</h3>
-    <p class="cifra">{{numeroObjetivo}}</p>
+    <p class="cifra">{{numeroObjetivoAnimado}}</p>
 </div>
 
-<app-timer *ngIf="cifras.length==6 && !terminado" (terminadoEvent)="terminado=true" [tiempo]="1"></app-timer>
+<app-timer *ngIf="cifras.length==6 && !terminado" (terminadoEvent)="terminado=true" [tiempo]="tiempo"></app-timer>
 
 <app-quien-gana *ngIf="cifras.length==6 && terminado" [fase]="fase"></app-quien-gana>

@@ -6,19 +6,25 @@
                 <h5 class="modal-title" id="quienGanaModalLabel">Introduce el ganador</h5>
             </div>
             <div class="modal-body">
-                <div>
-                    <p>Las palabras más largas posibles son:</p>
-                    <span *ngFor="let larga of masLargas; last as isLast"> <b>{{larga}}</b> <span *ngIf="!isLast">, </span></span>
+                <button *ngIf="!mostrarPalabras && fase && (fase==fases.Letras || fase==fases.Letras2)" class="btn btn-danger" (click)="mostrarPalabras=true">Mostrar mejores palabras</button>
+                <div *ngIf="mostrarPalabras">
+                    <div *ngIf="masLargas.length>0; else noHay">
+                        <p>Las palabras más largas posibles son:</p>
+                        <span *ngFor="let larga of masLargas; last as isLast"> <b>{{larga}}</b> <span *ngIf="!isLast">,
+                            </span></span>
+                    </div>
+                    <ng-template #noHay>
+                        No existe ninguna palabra posible.
+                    </ng-template>
                 </div>
-                <ng-template #noHay>
-                    No existe ninguna palabra posible.
-                </ng-template>
+
                 <p class="mt-4">¿Quién ha ganado?</p>
                 <div *ngIf="jugadores.length>0" class="btn-group d-flex flex-wrap align-items-start" role="group">
                     <ng-container *ngFor="let jugador of jugadores">
                         <input type="radio" class="btn-check" name="ganador" [id]="'rd'+jugador.nombre"
                             autocomplete="off" [formControl]="ganador" [value]="jugador.nombre">
-                        <label class="btn btn-outline-primary" [for]="'rd'+jugador.nombre">{{jugador.nombre}}</label>
+                        <label class="btn btn-outline-primary flex-grow-0 m-1 no-rounded"
+                            [for]="'rd'+jugador.nombre">{{jugador.nombre}}</label>
                     </ng-container>
                 </div>
 
@@ -26,7 +32,7 @@
                     <div *ngIf="fase && (fase==fases.Letras || fase==fases.Letras2)">
                         <p>¿Con cuántos puntos?</p>
                         <div class="btn-group" role="group">
-                            <ng-container *ngFor="let puntos of [1,2,3,4,5,6,7,8,9]">
+                            <ng-container *ngFor="let puntos of [0,1,2,3,4,5,6,7,8,9]">
                                 <input type="radio" class="btn-check" name="puntuacion" [id]="'rd'+puntos"
                                     autocomplete="off" [formControl]="puntuacion" [value]="puntos">
                                 <label class="btn btn-outline-primary" [for]="'rd'+puntos">{{puntos}}</label>

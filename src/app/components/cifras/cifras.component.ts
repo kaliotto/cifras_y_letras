@@ -13,9 +13,13 @@ export class CifrasComponent implements OnInit, OnChanges {
   poolNumeros: number[] = [];
   cifras: number[] = [];
   numeroObjetivo: number = 0;
+  numeroObjetivoAnimado: number = 0;
   terminado: boolean = false;
+  tiempo!: number;
 
-  constructor(private juego: JuegoService) { }
+  constructor(private juego: JuegoService) {
+    this.tiempo = juego.getTiempoCifras();
+  }
 
   ngOnInit(): void {
     this.inicializacion();
@@ -40,16 +44,23 @@ export class CifrasComponent implements OnInit, OnChanges {
     console.log("Mezcladas: " + this.poolNumeros + " ----> " + this.poolNumeros.length);
 
     this.cifras.push(this.poolNumeros.splice(0, 1)[0]);
+
+    if (this.cifras.length == 6) {
+        this.EfectoContadorAnimado();
+    }
   }
-
+  
+  private EfectoContadorAnimado() {
+    let startTimestamp: number;
+    const step = (timestamp: number) => {
+      if (!startTimestamp)
+        startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / 300, 1);
+      this.numeroObjetivoAnimado = Math.floor(progress * (this.numeroObjetivo - 0) + 0);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
 }
-
-/*
-
-// Shuffle array
-const shuffled = array.sort(() => 0.5 - Math.random());
-
-// Get sub-array of first n elements after shuffled
-let selected = shuffled.slice(0, n);
-
-*/
