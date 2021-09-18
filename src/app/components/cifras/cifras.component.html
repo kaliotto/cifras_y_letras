@@ -15,6 +15,6 @@
     <p class="cifra">{{numeroObjetivo}}</p>
 </div>
 
-<app-timer *ngIf="cifras.length==6 && !terminado" (terminadoEvent)="terminado=true" [tiempo]="5"></app-timer>
+<app-timer *ngIf="cifras.length==6 && !terminado" (terminadoEvent)="terminado=true" [tiempo]="1"></app-timer>
 
 <app-quien-gana *ngIf="cifras.length==6 && terminado" [fase]="fase"></app-quien-gana>

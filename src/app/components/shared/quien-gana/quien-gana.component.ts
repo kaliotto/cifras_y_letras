@@ -12,6 +12,7 @@ import { Modal } from "bootstrap";
 })
 export class QuienGanaComponent implements OnInit {
   @Input() fase!: Fase;
+  @Input() masLargas!: string[];
 
   jugadores: Jugador[] = [];
   ganador = new FormControl('');
