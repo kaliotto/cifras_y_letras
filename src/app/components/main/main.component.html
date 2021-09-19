@@ -1,4 +1,6 @@
-<app-intro *ngIf="fase==fases.Intro"></app-intro>
-<app-cifras *ngIf="fase==fases.Cifras" [fase]="fase"></app-cifras>
-<app-letras *ngIf="fase==fases.Letras || fase==fases.Letras2" [fase]="fase"></app-letras>
-<app-resultado *ngIf="fase==fases.Resultado"></app-resultado>
+<div class="main">
+    <app-intro *ngIf="fase==fases.Intro"></app-intro>
+    <app-cifras *ngIf="fase==fases.Cifras" [fase]="fase"></app-cifras>
+    <app-letras *ngIf="fase==fases.Letras || fase==fases.Letras2" [fase]="fase"></app-letras>
+    <app-resultado *ngIf="fase==fases.Resultado"></app-resultado>
+</div>
