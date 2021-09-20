@@ -1,14 +1,18 @@
-<div class="container d-flex justify-content-center mb-3">
-    <button [disabled]="letras.length==9" class="btn btn-primary" (click)="consonante()">Consonante</button>
-    <button [disabled]="letras.length==9" class="btn btn-primary" (click)="vocal()">Vocal</button>
+<div class="container d-flex justify-content-center mb-3 gap">
+    <button [disabled]="letras.length==9" class="btn btn-dark" (click)="consonante()">Consonante</button>
+    <button [disabled]="letras.length==9" class="btn btn-dark" (click)="vocal()">Vocal</button>
 </div>
 
 <div class="container grid">
-    <div *ngFor="let letra of letras" class="card animate__animated animate__flip animate__faster">
+    <div *ngFor="let letra of letras" class="card animate__animated animate__flipInY animate__faster">
         <div class="card-body text-center">
             <span class="letra">{{letra}}</span>
         </div>
     </div>
+</div>
+
+<div *ngIf="letras.length==9 && !terminado" class="container text-center mt-3 mb-3">
+    <h3>¡Consigue la palabra más larga!</h3>
 </div>
 
 <app-timer *ngIf="letras.length==9 && !terminado" (terminadoEvent)="terminar()" [tiempo]="tiempo"></app-timer>

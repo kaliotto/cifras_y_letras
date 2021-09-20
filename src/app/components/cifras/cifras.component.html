@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center mb-3">
-    <button [disabled]="cifras.length==6" class="btn btn-primary" (click)="getCifra()">Cifra</button>
+    <button [disabled]="cifras.length==6" class="btn btn-dark" (click)="getCifra()">Cifra</button>
 </div>
 
 <div class="container grid">
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div *ngIf="cifras.length==6" class="container text-center">
+<div *ngIf="cifras.length==6" class="container text-center mt-3">
     <h3>El número a conseguir es el:</h3>
     <p class="cifra">{{numeroObjetivoAnimado}}</p>
 </div>

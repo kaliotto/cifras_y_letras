@@ -9,9 +9,14 @@
   display: flex;  /* establish flex container */
   flex-wrap: wrap;  /* enable flex items to wrap */
   justify-content: flex-start;
+  gap: 5px;
 }
 
 .grid > .card {
   flex: 0 0 32%;  /* don't grow, don't shrink, width */
-  margin-bottom: 5px;
+  //margin-bottom: 5px;
+}
+
+.gap{
+  gap: 10px;
 }

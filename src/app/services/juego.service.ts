@@ -52,11 +52,11 @@ export class JuegoService {
   }
 
   getTiempoCifras(): number {
-    //return 45;
-    return 6;
+    return 45;
+    //return 1;
   }
   getTiempoLetras(): number {
-    //return 30;
-    return 1;
+    return 30;
+    //return 1;
   }
 }
