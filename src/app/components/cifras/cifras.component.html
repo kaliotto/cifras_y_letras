@@ -2,6 +2,10 @@
     <button [disabled]="cifras.length==6" class="btn btn-dark" (click)="getCifra()">Cifra</button>
 </div>
 
+<div *ngIf="cifras.length==6 && !terminado" class="terminarContador">
+    <div class="btn btn-danger" (click)="finalizarContador()"><i class="bi-alarm"></i></div>
+</div>
+
 <div class="container grid">
     <div *ngFor="let cifra of cifras" class="card animate__animated animate__flipInY animate__faster">
         <div class="card-body text-center">

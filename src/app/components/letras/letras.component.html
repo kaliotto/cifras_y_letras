@@ -3,6 +3,10 @@
     <button [disabled]="letras.length==9" class="btn btn-dark" (click)="vocal()">Vocal</button>
 </div>
 
+<div *ngIf="letras.length==9 && !terminado" class="terminarContador">
+    <div class="btn btn-danger" (click)="terminar()"><i class="bi-alarm"></i></div>
+</div>
+
 <div class="container grid">
     <div *ngFor="let letra of letras" class="card animate__animated animate__flipInY animate__faster">
         <div class="card-body text-center">

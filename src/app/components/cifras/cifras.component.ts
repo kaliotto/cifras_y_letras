@@ -46,10 +46,14 @@ export class CifrasComponent implements OnInit, OnChanges {
     this.cifras.push(this.poolNumeros.splice(0, 1)[0]);
 
     if (this.cifras.length == 6) {
-        this.EfectoContadorAnimado();
+      this.EfectoContadorAnimado();
     }
   }
-  
+
+  finalizarContador() {
+    this.terminado = true;    
+  }
+
   private EfectoContadorAnimado() {
     let startTimestamp: number;
     const step = (timestamp: number) => {
